@@ -35,7 +35,7 @@ function Footer() {
           </div>
           {/* Deepak Bharathi M */}
           <div className="text-white text-center">
-            <p>Deepak Bharathi M</p>
+            <p>Deepak Barathi M</p>
             <div className="flex justify-center space-x-4 mt-2">
               <a href="https://www.linkedin.com/in/deepakbharathim/" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands text-xl text-white fa-linkedin"></i>
