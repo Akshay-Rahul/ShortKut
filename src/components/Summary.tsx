@@ -32,7 +32,7 @@ function Summary({ isTrans, transcript, videoUrl }: { isTrans: boolean; transcri
       {notfi ? (
         <div
           id="toast-top-right"
-          className="fixed flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x rtl:divide-x-reverse divide-gray-200 rounded-lg shadow top-5 right-5 dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800"
+          className="notification-toast"
           role="alert"
         >
           <div className="text-sm text-green-500 font-bold">Text copied</div>
@@ -41,10 +41,8 @@ function Summary({ isTrans, transcript, videoUrl }: { isTrans: boolean; transcri
 
       {isTrans ? (
         <div className="summary-container">
-          <button className="copy-button" onClick={copyToClipboard}>
-            Copy the Summary <i className="fa fa-copy"></i>
-          </button>
           <h1 className="summary-header">Video Summary</h1>
+
           {/* YouTube Video Embed */}
           {videoUrl && (
             <div className="video-container">
@@ -56,19 +54,27 @@ function Summary({ isTrans, transcript, videoUrl }: { isTrans: boolean; transcri
               ></iframe>
             </div>
           )}
-          {/* Assuming cleaned transcript is formatted with timestamps */}
-          {cleanedTranscript.split("\n").map((line, index) => {
-            const isTimestamp = /^\[\d{2}:\d{2}\]/.test(line); // Simple regex to check for timestamp format
-            return (
-              <div key={index}>
-                {isTimestamp ? (
-                  <span className="timestamp"><strong>{line}</strong></span> // Use <strong> for bold
-                ) : (
-                  <p className="paragraph">{line}</p>
-                )}
-              </div>
-            );
-          })}
+
+          {/* Cleaned transcript display */}
+          <div className="transcript-container">
+            {cleanedTranscript.split("\n").map((line, index) => {
+              const isTimestamp = /^\[\d{2}:\d{2}\]/.test(line); // Simple regex to check for timestamp format
+              return (
+                <div key={index}>
+                  {isTimestamp ? (
+                    <span className="timestamp"><strong>{line}</strong></span> // Use <strong> for bold
+                  ) : (
+                    <p className="paragraph">{line}</p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Move copy button to the bottom */}
+          <button className="copy-button" onClick={copyToClipboard}>
+            Copy the Summary <i className="fa fa-copy"></i>
+          </button>
         </div>
       ) : null}
     </>
