@@ -3,8 +3,6 @@
 
 This project is a YouTube video summarizer built using React and TypeScript. It allows users to obtain a concise summary of any length video, saving them valuable time.
 
-![](https://github.com/arshadakl/assets/blob/main/youtube-Summarizer-type.png?raw=true)
-
 ## Installation
 
 1. **Clone the repository:**
